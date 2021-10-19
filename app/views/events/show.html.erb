@@ -1,0 +1,22 @@
+<p id="notice"><%= notice %></p>
+
+<%= link_to 'Edit', edit_event_path(@event) %> |
+<%= link_to 'Back', events_path %>
+
+<div class = "centered-container">
+  <div class = "centered-text"><%= @event.title %>
+
+    <div class = "event-info">
+     <div class = "event-information">
+      <%= @event.information %>
+     </div>
+
+     <div class = "event-date">
+       <%= @event.date%>
+       <br>
+       Event hosted by: <%= link_to @event.creator.name, @event.creator %>
+     </div>
+
+
+    </div>
+  
