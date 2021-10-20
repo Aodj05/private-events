@@ -14,6 +14,15 @@
        <%= render partial: "card", locals: { event: event} %>
      <% end %>
     </section>
- </section>
+  </section>
 
- <hr>
+  <hr>
+  <section>
+    <h2 class="centered-text">Previously Attended Events</h2>
+
+    <section class="event-list">
+      <% @user.attended_events.past.each do |event| %>
+        <%= render partial: "events/card", locals: { event: event } %>
+      <% end %>
+    </section>
+  </section>

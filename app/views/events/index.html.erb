@@ -16,7 +16,7 @@
     <h2 class = "centered-text">Previous</h2>
 
       <section class = "event-list">
-       <% @event.previous.each do |event| %>
+       <% @event.past.each do |event| %>
          <%= render partial: "card", locals: { event: event } %>
        <% end %>
       </section>

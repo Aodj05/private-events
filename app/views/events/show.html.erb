@@ -17,6 +17,25 @@
        Event hosted by: <%= link_to @event.creator.name, @event.creator %>
      </div>
 
+     <div class = "event-attendance">
+       Attending: <% @event.attendees.each do |attendee| %>
+         <%= link_to attendee.name, attendee %>
+       <% end %>
 
+       <% if user_logged_in? %>
+         <% if Event.upcoming.exists?(@event.id) %>
+           <% if @event.attendees.where(id: current_user.id).any? %>
+             <%= button_to "Cancel", event_attendance_path(event_id: @event.id, attendee_id: @current_user.id), method: :delete, class: "event-btn"%>
+            <% elsif @event.attendees.where(id: current_user.id).any? || @event.creator == current_user %>
+              <%= button_to "Attend", event_attendance_path(event_id: @event.id, attendee_id: @current_user.id), method: :post, class: "event-btn"%>
+           <% end %>
+         <% end %>
+          <% if @event.creator == current_user %>
+            <%= button_to 'Delete', @event, method: :delete, data: {confirm: "Are you sure?"}, class: "event-btn"%>
+          <% end %>
+       <% end %>%>
+      </div>
     </div>
+  </div>
+</div>
   
