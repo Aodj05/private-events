@@ -1,13 +1,8 @@
-<p id="notice"><%= notice %></p>
-
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
-
 <div class = "container">
  <h1 class = "centered-text" > <%= @user.name %></h1>
 
  <section>
-   <h2 class = "event-list">Upcoming Events</h2>
+   <h2 class = "centered-text">Upcoming Events</h2>
 
    <section class = "event-list">
      <% @user.event_attendances.upcoming.each do |event| %>
@@ -26,3 +21,4 @@
       <% end %>
     </section>
   </section>
+</div>

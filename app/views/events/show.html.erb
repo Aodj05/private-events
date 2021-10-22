@@ -35,6 +35,15 @@
           <% end %>
        <% end %>%>
       </div>
+      <div class="event-invite">
+      <% if user_logged_in? %>
+        <% if @event.creator == current_user || @event.attendees.where(id: current_user.id).any? %>
+          <strong>Invite Users:</strong>
+          <% (User.all - @event.attendees).each do |user| %>
+            <%= render partial: "invites/fragment", locals: { event: @event, user: user } unless user == current_user %>
+          <% end %>
+        <% end %>
+      <% end %>
     </div>
   </div>
 </div>
